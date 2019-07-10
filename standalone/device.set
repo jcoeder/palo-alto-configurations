@@ -1,26 +1,3 @@
-set deviceconfig setting config rematch yes
-set deviceconfig setting management hostname-type-in-syslog FQDN
-set deviceconfig setting management disable-predefined-reports [ spyware-infecte
-d-hosts top-application-categories top-technology-categories bandwidth-trend ris
-k-trend threat-trend top-users top-attackers top-victims top-attackers-by-countr
-ies top-victims-by-countries top-sources top-destinations top-destination-countr
-ies top-source-countries top-connections top-ingress-interfaces top-egress-inter
-faces top-ingress-zones top-egress-zones top-applications top-http-applications
-top-rules top-attacks top-spyware-threats top-viruses top-vulnerabilities wildfi
-re-file-digests top-websites top-url-categories top-url-users top-url-user-behav
-ior top-blocked-websites top-blocked-url-categories top-blocked-url-users top-bl
-ocked-url-user-behavior blocked-credential-post unknown-tcp-connections unknown-
-udp-connections top-denied-sources top-denied-destinations top-denied-applicatio
-ns risky-users "SaaS Application Usage" gtp-events-summary gtp-malicious-wildfir
-e-submissions gtp-security-events gtp-v1-causes gtp-v2-causes gtp-users-visiting
--malicious-url top-gtp-attacker-destinations top-gtp-attacker-sources top-gtp-vi
-ctim-destinations top-gtp-victim-sources ]
-set deviceconfig setting auto-mac-detect yes
-set deviceconfig system update-server updates.paloaltonetworks.com
-set deviceconfig system update-schedule threats recurring weekly day-of-week wed
-nesday
-set deviceconfig system update-schedule threats recurring weekly at 01:02
--only
 set deviceconfig system timezone US/Pacific
 set deviceconfig system service disable-telnet yes
 set deviceconfig system service disable-http yes
@@ -28,144 +5,23 @@ set deviceconfig system hostname PA-VM
 set deviceconfig system server-verification yes
 set deviceconfig system dns-setting servers primary 172.31.51.51
 set deviceconfig system dns-setting servers secondary 172.31.51.52
-set deviceconfig system ip-address 172.31.33.230
+set deviceconfig system ip-address 172.31.33.230 type static
 set deviceconfig system netmask 255.255.255.0
 set deviceconfig system default-gateway 172.31.33.1
-set network interface ethernet ethernet1/3 layer3 ipv6 neighbor-discovery router
--advertisement enable no
 set network interface ethernet ethernet1/3 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/3 layer3 lldp enable no
 set network interface ethernet ethernet1/3 layer3 ip 192.168.3.1/24
-set network interface ethernet ethernet1/3 layer3 interface-management-profile P
-ING
-set network interface ethernet ethernet1/4 layer3 ipv6 neighbor-discovery router
--advertisement enable no
+set network interface ethernet ethernet1/3 layer3 interface-management-profile PING
 set network interface ethernet ethernet1/4 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/4 layer3 ip 192.168.4.1/24
-ING
+set network interface ethernet ethernet1/4 layer3 interface-management-profile PING
 set network interface ethernet ethernet1/4 layer3 lldp enable no
 set network profiles monitor-profile default interval 3
 set network profiles monitor-profile default threshold 5
 set network profiles monitor-profile default action wait-recover
 set network profiles interface-management-profile PING ping yes
-set network ike crypto-profiles ike-crypto-profiles default encryption [ aes-128
--cbc 3des ]
-set network ike crypto-profiles ike-crypto-profiles default hash sha1
-set network ike crypto-profiles ike-crypto-profiles default dh-group group2
-set network ike crypto-profiles ike-crypto-profiles default lifetime hours 8
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-128 encryption a
-es-128-cbc
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-128 hash sha256
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-128 dh-group gro
-up19
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-128 lifetime hou
-rs 8
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-256 encryption a
-es-256-cbc
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-256 hash sha384
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-256 dh-group gro
-set network ike crypto-profiles ike-crypto-profiles Suite-B-GCM-256 lifetime hou
-rs 8
-set network ike crypto-profiles ipsec-crypto-profiles default esp encryption [ a
-es-128-cbc 3des ]
-set network ike crypto-profiles ipsec-crypto-profiles default esp authentication
- sha1
-set network ike crypto-profiles ipsec-crypto-profiles default dh-group group2
-set network ike crypto-profiles ipsec-crypto-profiles default lifetime hours 1
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-128 esp encryp
-tion aes-128-gcm
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-128 esp authen
-tication none
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-128 dh-group g
-roup19
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-128 lifetime h
-ours 1
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-256 esp encryp
-tion aes-256-gcm
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-256 esp authen
-tication none
-set network ike crypto-profiles ipsec-crypto-profiles Suite-B-GCM-256 dh-group g
-roup20
-ours 1
-set network ike crypto-profiles global-protect-app-crypto-profiles default encry
-ption aes-128-cbc
-set network ike crypto-profiles global-protect-app-crypto-profiles default authe
-ntication sha1
-set network qos profile default class class1 priority real-time
-set network qos profile default class class2 priority high
-set network qos profile default class class3 priority high
-set network qos profile default class class4 priority medium
-set network qos profile default class class5 priority medium
-set network qos profile default class class6 priority low
-set network qos profile default class class7 priority low
-set network qos profile default class class8 priority low
-set network virtual-router default protocol bgp enable no
-set network virtual-router default protocol bgp dampening-profile default cutoff
- 1.25
-set network virtual-router default protocol bgp dampening-profile default reuse
-0.5
-set network virtual-router default protocol bgp dampening-profile default max-ho
-ld-time 900
-set network virtual-router default protocol bgp dampening-profile default decay-
-half-life-reachable 300
-half-life-unreachable 900
-set network virtual-router default protocol bgp dampening-profile default enable
- yes
 set network virtual-router default interface [ ethernet1/3 ethernet1/4 ]
-set network dhcp interface ethernet1/3 server option dns primary 172.31.51.51
-set network dhcp interface ethernet1/3 server option dns secondary 172.31.51.52
-set network dhcp interface ethernet1/3 server option lease timeout 1440
-set network dhcp interface ethernet1/3 server option gateway 192.168.3.1
-set network dhcp interface ethernet1/3 server option subnet-mask 255.255.255.0
-set network dhcp interface ethernet1/3 server ip-pool 192.168.3.32-192.168.3.127
-set network dhcp interface ethernet1/3 server mode auto
-set network dhcp interface ethernet1/3 server probe-ip yes
-set network dhcp interface ethernet1/4 server option dns primary 172.31.51.51
-set network dhcp interface ethernet1/4 server option dns secondary 172.31.51.52
-set network dhcp interface ethernet1/4 server option lease timeout 1440
-set network dhcp interface ethernet1/4 server option gateway 192.168.4.1
-set network dhcp interface ethernet1/4 server option subnet-mask 255.255.255.0
-set network dhcp interface ethernet1/4 server ip-pool 192.168.4.32-192.168.4.127
-set network dhcp interface ethernet1/4 server mode auto
-set network dhcp interface ethernet1/4 server probe-ip yes
-set shared application
-set shared application-group
-set shared service-group
-set shared botnet configuration http dynamic-dns enabled yes
-set shared botnet configuration http dynamic-dns threshold 5
-set shared botnet configuration http malware-sites enabled yes
-set shared botnet configuration http malware-sites threshold 5
-set shared botnet configuration http recent-domains enabled yes
-set shared botnet configuration http recent-domains threshold 5
-set shared botnet configuration http ip-domains enabled yes
-set shared botnet configuration http ip-domains threshold 10
-set shared botnet configuration http executables-from-unknown-sites enabled yes
-set shared botnet configuration http executables-from-unknown-sites threshold 5
-set shared botnet configuration other-applications irc yes
-set shared botnet configuration unknown-applications unknown-tcp destinations-pe
-r-hour 10
-set shared botnet configuration unknown-applications unknown-tcp sessions-per-ho
-ur 10
-set shared botnet configuration unknown-applications unknown-tcp session-length
-maximum-bytes 100
-set shared botnet configuration unknown-applications unknown-tcp session-length
-minimum-bytes 50
-set shared botnet configuration unknown-applications unknown-udp destinations-pe
-r-hour 10
-ur 10
-set shared botnet configuration unknown-applications unknown-udp session-length
-maximum-bytes 100
-set shared botnet configuration unknown-applications unknown-udp session-length
-minimum-bytes 50
-set shared botnet report topn 100
-set shared botnet report scheduled yes
-set shared content-preview application
-set shared content-preview application-type category
-set shared content-preview application-type technology
 set zone INTERNAL network layer3 [ ethernet1/3 ethernet1/4 ]
-set service-group
-set service
-set schedule
 set rulebase default-security-rules rules intrazone-default action allow
 set rulebase default-security-rules rules intrazone-default log-start yes
 set rulebase default-security-rules rules intrazone-default log-end yes
@@ -173,5 +29,3 @@ set rulebase default-security-rules rules interzone-default action deny
 set rulebase default-security-rules rules interzone-default log-start yes
 set rulebase default-security-rules rules interzone-default log-end yes
 set import network interface [ ethernet1/3 ethernet1/4 ]
-set application-group
-set mgt-config users admin phash fnRL/G5lXVMug
