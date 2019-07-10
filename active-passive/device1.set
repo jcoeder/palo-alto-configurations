@@ -5,7 +5,6 @@ set deviceconfig system dns-setting servers secondary 172.31.51.52
 set deviceconfig system ip-address 172.31.33.241 type static
 set deviceconfig system netmask 255.255.255.0
 set deviceconfig system default-gateway 172.31.33.1
-
 set deviceconfig high-availability interface ha1
 set deviceconfig high-availability interface ha1-backup port ethernet1/1
 set deviceconfig high-availability interface ha1-backup ip-address 169.254.0.2
@@ -20,34 +19,25 @@ set deviceconfig high-availability group 1 state-synchronization ha2-keep-alive 
 set deviceconfig high-availability group 1 mode active-passive passive-link-state auto
 set deviceconfig high-availability group 1 election-option preemptive yes
 set deviceconfig high-availability group 1 election-option timers recommended
-
 set network interface ethernet ethernet1/1 ha
 set network interface ethernet ethernet1/2 ha
-
-set network interface ethernet ethernet1/3 layer3 ipv6 neighbor-discovery router-advertisement enable no
 set network interface ethernet ethernet1/3 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/3 layer3 ip 192.168.3.1/24
 set network interface ethernet ethernet1/3 layer3 interface-management-profile PING
 set network interface ethernet ethernet1/3 layer3 lldp enable no
-
-set network interface ethernet ethernet1/4 layer3 ipv6 neighbor-discovery router enable no
 set network interface ethernet ethernet1/4 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/4 layer3 ip 192.168.4.1/24
 set network interface ethernet ethernet1/4 layer3 interface-management-profile PING
 set network interface ethernet ethernet1/4 layer3 lldp enable no
-
 set network profiles lldp-profile LLDP option-tlvs management-address enabled no
 set network profiles lldp-profile LLDP option-tlvs port-description yes
 set network profiles lldp-profile LLDP option-tlvs system-name yes
 set network profiles lldp-profile LLDP option-tlvs system-description yes
 set network profiles lldp-profile LLDP option-tlvs system-capabilities yes
 set network profiles interface-management-profile PING ping yes
-
 set network virtual-router default interface [ ethernet1/3 ethernet1/4 ]
 set network lldp enable yes
-
 set zone INTERNAL network layer3 [ ethernet1/3 ethernet1/4 ]
-
 set rulebase default-security-rules rules intrazone-default action allow
 set rulebase default-security-rules rules intrazone-default log-start yes
 set rulebase default-security-rules rules intrazone-default log-end yes
