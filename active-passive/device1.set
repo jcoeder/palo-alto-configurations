@@ -1,23 +1,15 @@
-set deviceconfig system update-server updates.paloaltonetworks.com
-set deviceconfig system update-schedule threats recurring weekly day-of-week wednesday
-set deviceconfig system update-schedule threats recurring weekly at 01:02
-set deviceconfig system update-schedule threats recurring weekly action download-only
-set deviceconfig system timezone US/Pacific
 set deviceconfig system service disable-telnet yes
 set deviceconfig system service disable-http yes
-set deviceconfig system hostname PA-VM
-set deviceconfig system server-verification yes
 set deviceconfig system dns-setting servers primary 172.31.51.51
 set deviceconfig system dns-setting servers secondary 172.31.51.52
-set deviceconfig system ip-address 172.31.33.241
+set deviceconfig system ip-address 172.31.33.241 type static
 set deviceconfig system netmask 255.255.255.0
 set deviceconfig system default-gateway 172.31.33.1
-set deviceconfig setting config rematch yes
-set deviceconfig setting management hostname-type-in-syslog FQDN
-set deviceconfig setting auto-mac-detect yes
+
 set deviceconfig high-availability interface ha1
 set deviceconfig high-availability interface ha1-backup port ethernet1/1
 set deviceconfig high-availability interface ha1-backup ip-address 169.254.0.2
+set deviceconfig high-availability interface ha1-backup netmask 255.255.255.252
 set deviceconfig high-availability interface ha2 port ethernet1/2
 set deviceconfig high-availability interface ha2 ip-address 169.254.0.6
 set deviceconfig high-availability interface ha2 netmask 255.255.255.252
@@ -31,11 +23,13 @@ set deviceconfig high-availability group 1 election-option timers recommended
 
 set network interface ethernet ethernet1/1 ha
 set network interface ethernet ethernet1/2 ha
+
 set network interface ethernet ethernet1/3 layer3 ipv6 neighbor-discovery router-advertisement enable no
 set network interface ethernet ethernet1/3 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/3 layer3 ip 192.168.3.1/24
 set network interface ethernet ethernet1/3 layer3 interface-management-profile PING
 set network interface ethernet ethernet1/3 layer3 lldp enable no
+
 set network interface ethernet ethernet1/4 layer3 ipv6 neighbor-discovery router enable no
 set network interface ethernet ethernet1/4 layer3 ndp-proxy enabled no
 set network interface ethernet ethernet1/4 layer3 ip 192.168.4.1/24
