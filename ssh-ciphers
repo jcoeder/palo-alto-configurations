@@ -1,0 +1,10 @@
+PALO ALTO SSH CIPHERS
+
+set deviceconfig system ssh ciphers mgmt aes128-cbc
+set deviceconfig system ssh ciphers mgmt aes192-cbc
+set deviceconfig system ssh ciphers mgmt aes256-cbc
+set deviceconfig system ssh ciphers mgmt aes128-ctr
+set deviceconfig system ssh ciphers mgmt aes192-ctr
+set deviceconfig system ssh ciphers mgmt aes256-ctr
+set deviceconfig system ssh ciphers mgmt aes128-gcm
+set deviceconfig system ssh ciphers mgmt aes256-gcm
